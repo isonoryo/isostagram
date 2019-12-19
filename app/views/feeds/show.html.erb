@@ -1,0 +1,14 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+<p>
+  <strong>画像:</strong>
+  <%= image_tag @feed.image.url %>
+</p>
+
+<p>
+  <strong>コメント:</strong>
+  <%= @feed.content %>
+</p>
+
+<%= link_to '編集', edit_feed_path(@feed) %> |
+<%= link_to '一覧へ戻る', feeds_path %>

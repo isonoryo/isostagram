@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  root to: 'users#new'
+  resources :feeds do
+    collection do
+      post :confirm
+      resources :sessions, only: [:new, :create, :destroy]
+      resources :users
+    end
+  end
 end
