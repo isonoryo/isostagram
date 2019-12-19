@@ -8,6 +8,7 @@ class FeedsController < ApplicationController
 
 
   def show
+    @favorite = current_user.favorites.find_by(feed_id: @feed.id)
   end
 
   def new
@@ -31,6 +32,7 @@ class FeedsController < ApplicationController
     @feed = current_user.feeds.build(feed_params)
     respond_to do |format|
       if @feed.save
+        ContactMailer.contact_mail(@feed).deliver
         format.html { redirect_to @feed, notice: '🌟新規投稿が完了しました🌟' }
         format.json { render :show, status: :created, location: @feed }
       else

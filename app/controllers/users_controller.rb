@@ -30,6 +30,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def favo_index
+    @user = User.find(params[:id])
+    @favorites = current_user.favorite_feeds.all
+  end
+
   private
 
     def user_params
