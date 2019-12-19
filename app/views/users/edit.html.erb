@@ -1,6 +1,11 @@
 <h1>プロフィール編集</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
+
+  <%= f.label :プロフィール画像 %>
+  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  <%= f.file_field :image %>
+
   <%= f.label :お名前 %>
   <%= f.text_field :name %>
 
@@ -10,7 +15,13 @@
   <%= f.label :自己紹介文 %>
   <%= f.text_field :introduce %>
 
-  
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
 
+  <%= f.label :パスワード（再入力） %>
+  <%= f.password_field :password_confirmation %>
+
+
+<%= f.submit "🌟プロフィールを更新する🌟" %>
 
 <% end %>
