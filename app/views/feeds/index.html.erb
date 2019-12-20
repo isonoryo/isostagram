@@ -19,9 +19,11 @@
         <td><%= feed.user.name %></td>
         <td><%= feed.content %></td>
         <td><%= link_to '確認する', feed %></td>
+        <% if logged_in? && current_user.id == feed.user.id %>
         <td><%= link_to '編集する', edit_feed_path(feed) %></td>
         <td><%= link_to '削除する', feed, method: :delete, data: { confirm: '削除してよろしいですか?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

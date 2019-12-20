@@ -1,7 +1,10 @@
 <h1>お気に入り投稿一覧</h1>
 
 <% @favorites.each do |favo| %>
-  <%= image_tag favo.image.to_s %>
-  <%= favo.user.name %>
-  <%= favo.content %>
+  <% unless favo.feed.image.blank? %>
+  <%= image_tag favo.feed.image.to_s %>
+  <% end %>
+  <%= favo.feed.user.name%>
+  <%= favo.feed.content %>
 <% end %>
+  

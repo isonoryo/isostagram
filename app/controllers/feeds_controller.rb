@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :authen_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -73,4 +74,13 @@ class FeedsController < ApplicationController
     def feed_params
       params.require(:feed).permit(:image, :image_cache, :content)
     end
+
+    def authen_user
+      @feed = Feed.find(params[:id])
+      unless current_user.id == @feed.user.id
+        flash[:notice] = "投稿者以外の編集は出来ません。"
+        redirect_to feeds_path
+      end
+    end
+
 end
