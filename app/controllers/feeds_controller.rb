@@ -2,11 +2,9 @@ class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
   before_action :authen_user, only: [:edit, :update, :destroy]
 
-
   def index
     @feeds = Feed.all
   end
-
 
   def show
     @favorite = current_user.favorites.find_by(feed_id: @feed.id)
@@ -28,7 +26,6 @@ class FeedsController < ApplicationController
   def edit
   end
 
-
   def create
     @feed = current_user.feeds.build(feed_params)
     respond_to do |format|
@@ -43,7 +40,6 @@ class FeedsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @feed.update(feed_params)
@@ -56,7 +52,6 @@ class FeedsController < ApplicationController
     end
   end
 
-
   def destroy
     @feed.destroy
     respond_to do |format|
@@ -65,7 +60,7 @@ class FeedsController < ApplicationController
     end
   end
 
-  private
+    private
 
     def set_feed
       @feed = Feed.find(params[:id])

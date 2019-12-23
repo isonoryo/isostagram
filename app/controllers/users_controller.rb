@@ -32,15 +32,13 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
   # 飯田さん始
   def favo_index
     @user = User.where(id: current_user.id)
     @favorites = Favorite.where(user_id: current_user)
   end
   # 飯田さん終
-
-  private
+    private
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
