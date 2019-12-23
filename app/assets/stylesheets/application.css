@@ -9,7 +9,83 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+ html {
+   position: relative;
+   font-size: 62.5%;
+   width: 100%;
+   height: 100%;
+ }
+
+ body {
+   width: 100%;
+   background-color: #EEEEEE;
+   height: 100%;
+ }
+
+ .container {
+   width: 70%;
+   position: relative;
+   min-height: 100%;
+   padding-top: 75px;
+ }
+
+ .header {
+   height: 75px;
+   background-color: white;
+   width: 100%;
+   margin-top: 0;
+   position: fixed;
+   z-index: 1;
+ }
+
+
+ .top_ul li {
+   float: right;
+   display: block;
+   text-align: center;
+   margin: 15px 15px;
+ }
+
+ #top_icon {
+   font-family: fantasy;
+   font-size: 35px;
+   float: left;
+ }
+
+ #li_top {
+   float: left;
+   /* margin-left: 15%; */
+ }
+
+ .clearfix:after {
+   content: "";
+   display: block;
+   clear: both;
+ }
+
+ footer {
+   /* position: absolute; */
+   width: 100%;
+   background-color: white;
+   text-align: center;
+   height: 50px;
+   bottom: 0px;
+ }
+
+ #error_explanation {
+   color: red;
+ }
+
+ .errors_msg {
+   text-align: left;
+ }
+
+ .notice {
+   font-size: 3rem;
+   text-align: center;
+ }

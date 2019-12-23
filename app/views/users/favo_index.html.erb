@@ -1,10 +1,25 @@
-<h1>お気に入り投稿一覧</h1>
+<div class="favo_index">
+  <h1>お気に入り投稿一覧</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>投稿者</th>
+        <th>コメント</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<% @favorites.each do |favo| %>
-  <% unless favo.feed.image.blank? %>
-  <%= image_tag favo.feed.image.to_s %>
-  <% end %>
-  <%= favo.feed.user.name%>
-  <%= favo.feed.content %>
-<% end %>
-  
+    <tbody>
+      <% @favorites.each do |favo| %>
+      <tr>
+        <td><% unless favo.feed.image.blank? %></td>
+        <td><%= image_tag favo.feed.image.to_s %></td>
+        <% end %>
+        <td><%= favo.feed.user.name%></td>
+        <td><%= favo.feed.content %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -9,20 +9,37 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    
+  <header class="header">
     <% if logged_in? %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <ul class="top_ul">
+        <li id="top_icon"> Isostagram </li>
+        <li id="li_top"><%= link_to "プロフィール", user_path(current_user.id) %></li>
+        <li id="li_top"><%= link_to '投稿一覧へ', feeds_path %></li>
+        <li id="li_top"><%= link_to 'お気に入り一覧', favo_index_path %></li>
+        <li id="li_top"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+      </ul>
     <% else %>
-      <%= link_to "新規アカウント登録", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
+      <ul class="top_ul">
+        <li id="top_icon"> Isostagram </li>
+        <li id="li_top"><%= link_to "新規アカウント登録", new_user_path %></li>
+        <li id="li_top"><%= link_to "ログイン", new_session_path %></li>
+      </ul>
     <% end %>
+  </header>
 
+  <body>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
+
+  <footer>
+    <p>Isostagram</p>
+    <p>© 2019 Copyright I・S・O株式会社</p>
+  </footer>
+
 </html>

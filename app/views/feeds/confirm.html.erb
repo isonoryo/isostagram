@@ -1,15 +1,17 @@
-<h1>下記の内容で投稿して良いですか？</h1>
+<div class="feed_confirm">
+  <h1>下記の内容で投稿して良いですか？</h1>
 
-<%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-  <%= form.hidden_field :content %>
-  <p>コメント：<%= @feed.content %></p>
-  <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "投稿する" %>
-<% end %>
+  <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
+    <%= form.hidden_field :content %>
+    <p>コメント：<%= @feed.content %></p>
+    <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "投稿する" %>
+  <% end %>
 
-<%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
-  <%= form.hidden_field :content %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name: "back" %>
-<% end %>
+  <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
+    <%= form.hidden_field :content %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.submit "戻る", name: "back" %>
+  <% end %>
+</div>

@@ -1,11 +1,15 @@
-<h1>ログイン</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+<div class="login_top">
 
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email %>
+  <h1>ログイン</h1>
+  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
 
-  <%= f.label :パスワード %>
-  <%= f.password_field :password %>
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email %>
 
-  <%= f.submit "🌟ログインする🌟" %>
-<% end %>
+    <%= f.label :パスワード %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "🌟ログインする🌟" %>
+  <% end %>
+
+</div>
