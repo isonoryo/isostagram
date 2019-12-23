@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :confirm_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       unless current_user.id == @user.id
         flash[:notice] = "本人以外の編集は出来ません。"
-        redirect_to feeds_path  
+        redirect_to feeds_path
       end
     end
 
